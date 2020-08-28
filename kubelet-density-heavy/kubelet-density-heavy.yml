@@ -1,0 +1,35 @@
+---
+global:
+  writeToFile: true
+  metricsDirectory: collected-metrics
+  indexerConfig:
+    enabled: true
+    esServers: [https://search-cloud-perf-lqrf3jjtaqo7727m7ynd2xyt4y.us-west-2.es.amazonaws.com]
+    insecureSkipVerify: false
+    defaultIndex: kubelet-density-heavy
+    type: elastic
+  measurements:
+    - name: podLatency
+      esIndex: kubelet-density-heavy-podlatency
+
+jobs:
+  - name: kubelet-density-heavy
+    jobIterations: 1000  
+    qps: 10
+    burst: 10
+    namespacedIterations: false
+    namespace: kubelet-density-heavy
+    waitWhenFinished: true
+    podWait: false
+    objects:
+
+      - objectTemplate: templates/postgres-deployment.yml
+        replicas: 1
+
+      - objectTemplate: templates/app-deployment.yml
+        replicas: 1
+        inputVars:
+          readinessPeriod: 10
+
+      - objectTemplate: templates/postgres-service.yml
+        replicas: 1
