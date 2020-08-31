@@ -4,8 +4,8 @@ global:
   metricsDirectory: collected-metrics
   indexerConfig:
     enabled: true
-    esServers: [https://search-cloud-perf-lqrf3jjtaqo7727m7ynd2xyt4y.us-west-2.es.amazonaws.com]
-    insecureSkipVerify: false
+    esServers: [https://elastic-tls-elk.apps.rsevilla-ocp45-ovn.perf-testing.devcluster.openshift.com]
+    insecureSkipVerify: true
     defaultIndex: kubelet-density
     type: elastic
   measurements:
@@ -14,7 +14,7 @@ global:
 
 jobs:
   - name: kubelet-density
-    jobIterations: 1000  
+    jobIterations: 10000
     qps: 10
     burst: 10
     namespacedIterations: false

@@ -4,7 +4,7 @@ global:
   metricsDirectory: collected-metrics
   indexerConfig:
     enabled: true
-    esServers: [https://search-cloud-perf-lqrf3jjtaqo7727m7ynd2xyt4y.us-west-2.es.amazonaws.com]
+    esServers: [http://elastic-elk.apps.rsevilla-ocp45-ovn.perf-testing.devcluster.openshift.com]
     insecureSkipVerify: false
     defaultIndex: cluster-density
     type: elastic
@@ -14,12 +14,13 @@ global:
 
 jobs:
   - name: cluster-density
-    jobIterations: 4000
-    qps: 60
-    burst: 80
+    jobIterations: 5
+    qps: 5
+    burst: 10
     namespacedIterations: true
     namespace: cluster-density
-    podWait: true
+    podWait: false
+    waitWhenFinished: true
     objects:
 
       - objectTemplate: templates/imagestream.yml

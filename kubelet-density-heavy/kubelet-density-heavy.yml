@@ -14,7 +14,7 @@ global:
 
 jobs:
   - name: kubelet-density-heavy
-    jobIterations: 1000  
+    jobIterations: 10000  
     qps: 10
     burst: 10
     namespacedIterations: false
