@@ -14,12 +14,13 @@ global:
 
 jobs:
   - name: cluster-density
-    jobIterations: 5
-    qps: 5
-    burst: 10
+    jobIterations: 2000
+    qps: 10
+    burst: 15
     namespacedIterations: true
     namespace: cluster-density
     podWait: false
+    waitFor: []
     waitWhenFinished: true
     objects:
 
@@ -78,7 +79,7 @@ jobs:
           name: deployment-1pod
 
       - objectTemplate: templates/route.yml
-        replicas: 2
+        replicas: 1
         inputVars:
           name: deployment-2pod
 
