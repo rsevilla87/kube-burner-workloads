@@ -20,11 +20,8 @@ metrics:
   - query: sum(irate(node_cpu_seconds_total[2m])) by (mode,instance)
     metricName: nodeCPU
 
-  - query: avg(node_memory_MemAvailable_bytes - node_memory_Cached_bytes + node_memory_Buffers_bytes) by (instance)
+  - query: avg(node_memory_MemAvailable_bytes) by (instance)
     metricName: nodeMemoryAvailable
-
-  - query: avg(node_memory_Active_bytes) by (instance)
-    metricName: nodeMemoryActive
 
   - query: avg(node_memory_Cached_bytes) by (instance) + avg(node_memory_Buffers_bytes) by (instance)
     metricName: nodeMemoryCached+nodeMemoryBuffers
