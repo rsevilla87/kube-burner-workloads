@@ -10,7 +10,7 @@ global:
     type: elastic
   measurements:
     - name: podLatency
-      esIndex: kubelet-density-podlatency
+      esIndex: kube-burner
 
 jobs:
   - name: kubelet-density
