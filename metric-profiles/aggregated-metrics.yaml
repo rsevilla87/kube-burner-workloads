@@ -128,10 +128,7 @@ metrics:
   - query: node_nf_conntrack_entries and on (instance) label_replace(kube_node_role{role="infra"}, "instance", "$1", "node", "(.+)")
     metricName: nodeConntrackEntries-Infra
 
-  - query: etcd_server_has_leader
-    metricName: etcdServerHasLeader
-
-  - query: rate(etcd_server_leader_changes_seen_total[2m])
+  - query: sum(rate(etcd_server_leader_changes_seen_total[2m]))
     metricName: etcdLeaderChangesRate
 
   - query: histogram_quantile(0.99, rate(etcd_disk_backend_commit_duration_seconds_bucket[2m]))

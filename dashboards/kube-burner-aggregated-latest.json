@@ -1,14 +1,6 @@
 {
   "__inputs": [
     {
-      "name": "DS_NODE-CPU",
-      "label": "node-cpu",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "elasticsearch",
-      "pluginName": "Elasticsearch"
-    },
-    {
       "name": "DS_CLUSTER-DENSITY",
       "label": "cluster-density",
       "description": "",
@@ -60,12 +52,12 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1601488164940,
+  "iteration": 1601508270602,
   "links": [],
   "panels": [
     {
       "collapsed": true,
-      "datasource": "${DS_NODE-CPU}",
+      "datasource": "${DS_CLUSTER-DENSITY}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1347,7 +1339,7 @@
     },
     {
       "collapsed": true,
-      "datasource": "${DS_NODE-CPU}",
+      "datasource": "${DS_CLUSTER-DENSITY}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -3809,42 +3801,13 @@
               "query": "uuid: $uuid AND metricName.keyword: etcdLeaderChangesRate",
               "refId": "A",
               "timeField": "timestamp"
-            },
-            {
-              "alias": "Etcd has leader",
-              "bucketAggs": [
-                {
-                  "$$hashKey": "object:98",
-                  "field": "timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "30s",
-                    "min_doc_count": "1",
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "metrics": [
-                {
-                  "$$hashKey": "object:96",
-                  "field": "value",
-                  "id": "1",
-                  "meta": {},
-                  "settings": {},
-                  "type": "avg"
-                }
-              ],
-              "query": "uuid: $uuid AND metricName.keyword: etcdServerHasLeader",
-              "refId": "B",
-              "timeField": "timestamp"
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Etcd leader",
+          "title": "Etcd leader changes",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -4990,7 +4953,7 @@
                   "id": "2",
                   "settings": {
                     "interval": "30s",
-                    "min_doc_count": 0,
+                    "min_doc_count": "1",
                     "trimEdges": 0
                   },
                   "type": "date_histogram"
@@ -5032,7 +4995,7 @@
                   "id": "2",
                   "settings": {
                     "interval": "30s",
-                    "min_doc_count": 0,
+                    "min_doc_count": "1",
                     "trimEdges": 0
                   },
                   "type": "date_histogram"
@@ -5176,7 +5139,7 @@
                   "id": "2",
                   "settings": {
                     "interval": "30s",
-                    "min_doc_count": 0,
+                    "min_doc_count": "1",
                     "trimEdges": 0
                   },
                   "type": "date_histogram"
@@ -5218,7 +5181,7 @@
                   "id": "2",
                   "settings": {
                     "interval": "30s",
-                    "min_doc_count": 0,
+                    "min_doc_count": "1",
                     "trimEdges": 0
                   },
                   "type": "date_histogram"
@@ -5304,136 +5267,12 @@
             "y": 34
           },
           "hiddenSeries": false,
-          "id": 8,
-          "legend": {
-            "alignAsTable": true,
-            "avg": false,
-            "current": false,
-            "max": true,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "percentage": false,
-          "pluginVersion": "7.1.5",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "scopedVars": {
-            "master": {
-              "selected": true,
-              "text": "ip-10-0-153-90.us-west-2.compute.internal",
-              "value": "ip-10-0-153-90.us-west-2.compute.internal"
-            }
-          },
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "alias": "Conntrack entries",
-              "bucketAggs": [
-                {
-                  "$$hashKey": "object:1885",
-                  "field": "timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "30s",
-                    "min_doc_count": "1",
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "metrics": [
-                {
-                  "$$hashKey": "object:1883",
-                  "field": "value",
-                  "id": "1",
-                  "meta": {},
-                  "settings": {},
-                  "type": "avg"
-                }
-              ],
-              "query": "uuid.keyword: $uuid AND metricName: \"nodeConntrackEntries\" AND labels.instance.keyword: $master",
-              "refId": "A",
-              "timeField": "timestamp"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Conntrack entries $master",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:393",
-              "format": "none",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "$$hashKey": "object:394",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "$Datasource",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 34
-          },
-          "hiddenSeries": false,
           "id": 6,
           "legend": {
             "avg": false,
             "current": false,
             "hideEmpty": true,
+            "hideZero": true,
             "max": false,
             "min": false,
             "show": true,
@@ -5475,7 +5314,7 @@
                   "field": "labels.device.keyword",
                   "id": "3",
                   "settings": {
-                    "min_doc_count": 0,
+                    "min_doc_count": "1",
                     "order": "desc",
                     "orderBy": "_term",
                     "size": "10"
@@ -5488,7 +5327,7 @@
                   "id": "2",
                   "settings": {
                     "interval": "30s",
-                    "min_doc_count": 0,
+                    "min_doc_count": "1",
                     "trimEdges": 0
                   },
                   "type": "date_histogram"
@@ -5518,7 +5357,7 @@
                   "field": "labels.device.keyword",
                   "id": "3",
                   "settings": {
-                    "min_doc_count": 0,
+                    "min_doc_count": "1",
                     "order": "desc",
                     "orderBy": "_term",
                     "size": "10"
@@ -5531,7 +5370,7 @@
                   "id": "2",
                   "settings": {
                     "interval": "30s",
-                    "min_doc_count": 0,
+                    "min_doc_count": "1",
                     "trimEdges": 0
                   },
                   "type": "date_histogram"
@@ -5654,8 +5493,8 @@
         "current": {},
         "datasource": "$Datasource",
         "definition": "{ \"find\" : \"terms\", \"field\": \"labels.node.keyword\",  \"query\": \"uuid.keyword: $uuid\", \"query\": \"metricName.keyword: nodeRoles\",  \"query\": \"labels.role.keyword: master\"}",
-        "hide": 2,
-        "includeAll": false,
+        "hide": 0,
+        "includeAll": true,
         "label": "Master nodes",
         "multi": true,
         "name": "master",
@@ -5696,8 +5535,8 @@
     ]
   },
   "time": {
-    "from": "now-6h",
-    "to": "now"
+    "from": "2020-09-30T21:26:41.762Z",
+    "to": "2020-09-30T23:20:23.020Z"
   },
   "timepicker": {
     "refresh_intervals": [
@@ -5716,5 +5555,5 @@
   "timezone": "",
   "title": "Kube-burner report - aggregated",
   "uid": "hIBqKNvMz123",
-  "version": 15
+  "version": 19
 }
