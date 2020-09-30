@@ -5,7 +5,7 @@ set -e
 IMAGE=${IMAGE:-docker.io/grafana/grafana:7.1.5}
 ENGINE=${ENGINE:-podman}
 PORT=$((($RANDOM%64000)+1024))
-DAHSBOARD=kube-burner.json
+DASHBOARD=kube-burner-latest.json
 
 add_dashboard(){
   echo "Adding dashboard ${1}"
@@ -71,5 +71,5 @@ while [[ $(curl -s -o /dev/null -w '%{http_code}' http://localhost:${PORT}/api/h
 done
 
 add_datasource "kube-burner" ${datasource} ${index}
-add_dashboard ${DAHSBOARD}
+add_dashboard ${DASHBOARD}
 echo -e "Kube-burner dashboard available at:\nhttp://localhost:${PORT}${url}?from=now-3h&to=now"
