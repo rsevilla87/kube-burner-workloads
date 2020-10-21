@@ -1,0 +1,43 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: postgres-{{.Replica}}
+spec:
+  template:
+    metadata:
+      labels:
+        name: postgres-{{.Replica}}
+        app: postgres
+    spec:
+      containers:
+      - name: postgresql
+        image: registry.redhat.io/rhel8/postgresql-10
+        ports:
+        - containerPort: 5432
+          protocol: TCP
+        env:
+        - name: POSTGRESQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: postgres-{{.Replica}}
+              key: username
+        - name: POSTGRESQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgres-{{.Replica}}
+              key: password
+        - name: POSTGRESQL_DATABASE
+          valueFrom:
+            secretKeyRef:
+              name: postgres-{{.Replica}}
+              key: database
+        imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+  replicas: 1
+  selector:
+    matchLabels:
+      name: postgres-{{.Replica}}
+  triggers:
+  - type: ConfigChange
+  strategy:
+    type: RollingUpdate

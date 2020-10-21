@@ -1,0 +1,21 @@
+---
+kind: Build
+apiVersion: build.openshift.io/v1
+metadata:
+  name: docker-strategy-{{.Replica}}
+spec:
+  source:
+    type: Dockerfile
+    dockerfile: |-
+      FROM registry.fedoraproject.org/fedora-minimal:latest
+      RUN touch $(date +%s)
+  strategy:
+    type: Source
+    dockerStrategy:
+      from:
+        kind: DockerImage
+        name: registry.fedoraproject.org/fedora-minimal:latest
+  output:
+    to:
+      kind: ImageStreamTag
+      name: {{.prefix}}-{{.Replica}}:latest

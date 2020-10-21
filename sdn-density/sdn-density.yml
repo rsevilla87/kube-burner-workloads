@@ -1,0 +1,64 @@
+---
+global:
+  writeToFile: true
+  metricsDirectory: collected-metrics
+  indexerConfig:
+    enabled: false
+    esServers: [http://elastic-elk.apps.rsevilla-ocp45-ovn.perf-testing.devcluster.openshift.com]
+    insecureSkipVerify: false
+    defaultIndex: kube-burner
+    type: elastic
+  measurements:
+    - name: podLatency
+      esIndex: kube-burner
+
+jobs:
+  - name: sdn-density
+    jobIterations: 50
+    qps: 8
+    burst: 8
+    namespacedIterations: true
+    namespace: sdn-density
+    podWait: false
+    waitFor: []
+    waitWhenFinished: true
+    objects:
+
+      - objectTemplate: templates/imagestream.yml
+        replicas: 1
+        inputVars:
+          prefix: source-strategy
+
+      - objectTemplate: templates/build-source.yml
+        replicas: 1
+        inputVars:
+          prefix: source-strategy
+          gitUri: https://github.com/openshift-scale/hello-openshift.git  
+          image: registry.redhat.io/ubi8/go-toolset:latest
+
+      - objectTemplate: templates/imagestream.yml
+        replicas: 1
+        inputVars:
+          prefix: docker-strategy
+
+      - objectTemplate: templates/build-docker.yml
+        replicas: 1
+        inputVars:
+          prefix: docker-strategy
+
+      - objectTemplate: templates/postgres-secret.yml
+        replicas: 2
+
+      - objectTemplate: templates/postgres-deployment.yml
+        replicas: 2
+
+      - objectTemplate: templates/postgres-service.yml
+        replicas: 2
+
+      - objectTemplate: templates/postgres-networkpolicy.yml
+        replicas: 2
+        
+      - objectTemplate: templates/app-deployment.yml
+        replicas: 2
+        inputVars:
+          podReplicas: 3

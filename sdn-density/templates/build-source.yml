@@ -1,0 +1,20 @@
+---
+kind: Build
+apiVersion: build.openshift.io/v1
+metadata:
+  name: source-strategy-{{.Replica}}
+spec:
+  source:
+    type: Git
+    git:
+      uri: {{.gitUri}}
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: DockerImage
+        name: {{.image}}
+  output:
+    to:
+      kind: ImageStreamTag
+      name: {{.prefix}}-{{.Replica}}:latest
