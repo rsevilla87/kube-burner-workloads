@@ -13,9 +13,6 @@ spec:
     type: Git
     git:
       uri: {{.gitUri}}
-    dockerfile: |-
-      FROM quay.io/openshift-scale/mastervertical-build
-      USER 1001
   strategy:
     type: Source
     sourceStrategy:

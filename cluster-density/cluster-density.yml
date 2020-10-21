@@ -15,8 +15,8 @@ global:
 jobs:
   - name: cluster-density
     jobIterations: 2000
-    qps: 10
-    burst: 15
+    qps: 20
+    burst: 20
     namespacedIterations: true
     namespace: cluster-density
     podWait: false
@@ -51,8 +51,7 @@ jobs:
       - objectTemplate: templates/build.yml
         replicas: 6
         inputVars:
-          gitUri: https://github.com/openshift-scale/hello-openshift.git
-          image: quay.io/openshift-scale/mastervertical-build:latest
+          prefix: cluster-density
 
       - objectTemplate: templates/deployment.yml
         replicas: 1
