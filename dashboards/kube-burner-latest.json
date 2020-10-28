@@ -52,7 +52,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1603183351384,
+  "iteration": 1603876692067,
   "links": [],
   "panels": [
     {
@@ -601,7 +601,7 @@
       "type": "row"
     },
     {
-      "collapsed": false,
+      "collapsed": true,
       "datasource": "${DS_ELASTICSEARCH}",
       "gridPos": {
         "h": 1,
@@ -610,537 +610,538 @@
         "y": 5
       },
       "id": 121,
-      "panels": [],
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$Datasource",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 6
+          },
+          "hiddenSeries": false,
+          "id": 116,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "sort": "avg",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "percentage": false,
+          "pluginVersion": "7.1.4",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "bucketAggs": [
+                {
+                  "$$hashKey": "object:134",
+                  "fake": true,
+                  "field": "labels.node.keyword",
+                  "id": "3",
+                  "settings": {
+                    "min_doc_count": "1",
+                    "order": "desc",
+                    "orderBy": "1",
+                    "size": "3"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "$$hashKey": "object:61",
+                  "field": "timestamp",
+                  "id": "2",
+                  "settings": {
+                    "interval": "30s",
+                    "min_doc_count": "1",
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "metrics": [
+                {
+                  "$$hashKey": "object:59",
+                  "field": "value",
+                  "id": "1",
+                  "meta": {},
+                  "settings": {},
+                  "type": "avg"
+                }
+              ],
+              "query": "uuid: $uuid AND metricName.keyword: top3KubeletCPU",
+              "refId": "A",
+              "timeField": "timestamp"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Top 3 Kubelet process CPU usage",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:80",
+              "format": "percent",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:81",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$Datasource",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 6
+          },
+          "hiddenSeries": false,
+          "id": 119,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "percentage": false,
+          "pluginVersion": "7.1.4",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "bucketAggs": [
+                {
+                  "$$hashKey": "object:134",
+                  "fake": true,
+                  "field": "labels.node.keyword",
+                  "id": "3",
+                  "settings": {
+                    "min_doc_count": "1",
+                    "order": "desc",
+                    "orderBy": "1",
+                    "size": "3"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "$$hashKey": "object:61",
+                  "field": "timestamp",
+                  "id": "2",
+                  "settings": {
+                    "interval": "30s",
+                    "min_doc_count": "1",
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "metrics": [
+                {
+                  "$$hashKey": "object:59",
+                  "field": "value",
+                  "id": "1",
+                  "meta": {},
+                  "settings": {},
+                  "type": "avg"
+                }
+              ],
+              "query": "uuid: $uuid AND metricName.keyword: top3KubeletMemory",
+              "refId": "A",
+              "timeField": "timestamp"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Top 10 Kubelet process memory usage",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:80",
+              "format": "bytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:81",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$Datasource",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 14
+          },
+          "hiddenSeries": false,
+          "id": 117,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "sort": "max",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "percentage": false,
+          "pluginVersion": "7.1.4",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "bucketAggs": [
+                {
+                  "$$hashKey": "object:134",
+                  "fake": true,
+                  "field": "labels.node.keyword",
+                  "id": "3",
+                  "settings": {
+                    "min_doc_count": "1",
+                    "order": "desc",
+                    "orderBy": "1",
+                    "size": "3"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "$$hashKey": "object:61",
+                  "field": "timestamp",
+                  "id": "2",
+                  "settings": {
+                    "interval": "30s",
+                    "min_doc_count": "1",
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "metrics": [
+                {
+                  "$$hashKey": "object:59",
+                  "field": "value",
+                  "id": "1",
+                  "meta": {},
+                  "settings": {},
+                  "type": "avg"
+                }
+              ],
+              "query": "uuid: $uuid AND metricName.keyword: top3CrioCPU",
+              "refId": "A",
+              "timeField": "timestamp"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Top 3 CRI-O process CPU usage",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:80",
+              "format": "percent",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:81",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$Datasource",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 14
+          },
+          "hiddenSeries": false,
+          "id": 118,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "percentage": false,
+          "pluginVersion": "7.1.4",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "bucketAggs": [
+                {
+                  "$$hashKey": "object:134",
+                  "fake": true,
+                  "field": "labels.node.keyword",
+                  "id": "3",
+                  "settings": {
+                    "min_doc_count": "1",
+                    "order": "desc",
+                    "orderBy": "1",
+                    "size": "3"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "$$hashKey": "object:61",
+                  "field": "timestamp",
+                  "id": "2",
+                  "settings": {
+                    "interval": "30s",
+                    "min_doc_count": "1",
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "metrics": [
+                {
+                  "$$hashKey": "object:59",
+                  "field": "value",
+                  "id": "1",
+                  "meta": {},
+                  "settings": {},
+                  "type": "avg"
+                }
+              ],
+              "query": "uuid: $uuid AND metricName.keyword: top3CrioMemory",
+              "refId": "A",
+              "timeField": "timestamp"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Top 3 CRI-O process memory usage",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:80",
+              "format": "bytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:81",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        }
+      ],
       "title": "Cluster Kubelet & CRI-O",
       "type": "row"
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "$Datasource",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 6
-      },
-      "hiddenSeries": false,
-      "id": 116,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "max": true,
-        "min": false,
-        "rightSide": true,
-        "show": true,
-        "sort": "avg",
-        "sortDesc": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pluginVersion": "7.1.4",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "$$hashKey": "object:134",
-              "fake": true,
-              "field": "labels.node.keyword",
-              "id": "3",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "1",
-                "size": "3"
-              },
-              "type": "terms"
-            },
-            {
-              "$$hashKey": "object:61",
-              "field": "timestamp",
-              "id": "2",
-              "settings": {
-                "interval": "30s",
-                "min_doc_count": "1",
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "$$hashKey": "object:59",
-              "field": "value",
-              "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "avg"
-            }
-          ],
-          "query": "uuid: $uuid AND metricName.keyword: top3KubeletCPU",
-          "refId": "A",
-          "timeField": "timestamp"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Top 3 Kubelet process CPU usage",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:80",
-          "format": "percent",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:81",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "$Datasource",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 6
-      },
-      "hiddenSeries": false,
-      "id": 119,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": false,
-        "max": true,
-        "min": false,
-        "rightSide": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pluginVersion": "7.1.4",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "$$hashKey": "object:134",
-              "fake": true,
-              "field": "labels.node.keyword",
-              "id": "3",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "1",
-                "size": "3"
-              },
-              "type": "terms"
-            },
-            {
-              "$$hashKey": "object:61",
-              "field": "timestamp",
-              "id": "2",
-              "settings": {
-                "interval": "30s",
-                "min_doc_count": "1",
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "$$hashKey": "object:59",
-              "field": "value",
-              "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "avg"
-            }
-          ],
-          "query": "uuid: $uuid AND metricName.keyword: top3KubeletMemory",
-          "refId": "A",
-          "timeField": "timestamp"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Top 10 Kubelet process memory usage",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:80",
-          "format": "bytes",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:81",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "$Datasource",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 14
-      },
-      "hiddenSeries": false,
-      "id": 117,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "max": true,
-        "min": false,
-        "rightSide": true,
-        "show": true,
-        "sort": "max",
-        "sortDesc": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pluginVersion": "7.1.4",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "$$hashKey": "object:134",
-              "fake": true,
-              "field": "labels.node.keyword",
-              "id": "3",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "1",
-                "size": "3"
-              },
-              "type": "terms"
-            },
-            {
-              "$$hashKey": "object:61",
-              "field": "timestamp",
-              "id": "2",
-              "settings": {
-                "interval": "30s",
-                "min_doc_count": "1",
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "$$hashKey": "object:59",
-              "field": "value",
-              "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "avg"
-            }
-          ],
-          "query": "uuid: $uuid AND metricName.keyword: top3CrioCPU",
-          "refId": "A",
-          "timeField": "timestamp"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Top 3 CRI-O process CPU usage",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:80",
-          "format": "percent",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:81",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "$Datasource",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 14
-      },
-      "hiddenSeries": false,
-      "id": 118,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": false,
-        "max": true,
-        "min": false,
-        "rightSide": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pluginVersion": "7.1.4",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "$$hashKey": "object:134",
-              "fake": true,
-              "field": "labels.node.keyword",
-              "id": "3",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "1",
-                "size": "3"
-              },
-              "type": "terms"
-            },
-            {
-              "$$hashKey": "object:61",
-              "field": "timestamp",
-              "id": "2",
-              "settings": {
-                "interval": "30s",
-                "min_doc_count": "1",
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "$$hashKey": "object:59",
-              "field": "value",
-              "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "avg"
-            }
-          ],
-          "query": "uuid: $uuid AND metricName.keyword: top3CrioMemory",
-          "refId": "A",
-          "timeField": "timestamp"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Top 3 CRI-O process memory usage",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:80",
-          "format": "bytes",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:81",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
     },
     {
       "collapsed": true,
@@ -1149,7 +1150,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 22
+        "y": 6
       },
       "id": 51,
       "panels": [
@@ -1171,7 +1172,7 @@
             "h": 9,
             "w": 12,
             "x": 0,
-            "y": 3
+            "y": 7
           },
           "hiddenSeries": false,
           "id": 112,
@@ -1312,7 +1313,7 @@
             "h": 9,
             "w": 12,
             "x": 12,
-            "y": 3
+            "y": 7
           },
           "hiddenSeries": false,
           "id": 114,
@@ -1454,7 +1455,7 @@
             "h": 9,
             "w": 12,
             "x": 0,
-            "y": 12
+            "y": 16
           },
           "hiddenSeries": false,
           "id": 57,
@@ -1599,7 +1600,7 @@
             "h": 9,
             "w": 12,
             "x": 12,
-            "y": 12
+            "y": 16
           },
           "hiddenSeries": false,
           "id": 59,
@@ -1787,7 +1788,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 21
+            "y": 25
           },
           "hiddenSeries": false,
           "id": 53,
@@ -1974,7 +1975,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 21
+            "y": 25
           },
           "hiddenSeries": false,
           "id": 55,
@@ -2161,7 +2162,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 29
+            "y": 33
           },
           "hiddenSeries": false,
           "id": 61,
@@ -2288,7 +2289,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 29
+            "y": 33
           },
           "hiddenSeries": false,
           "id": 65,
@@ -2473,7 +2474,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 23
+        "y": 25
       },
       "id": 37,
       "panels": [
@@ -2495,7 +2496,7 @@
             "h": 9,
             "w": 12,
             "x": 0,
-            "y": 4
+            "y": 8
           },
           "hiddenSeries": false,
           "id": 39,
@@ -2570,7 +2571,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "uuid.keyword: $uuid AND metricName: \"podCPU\" AND labels.node.keyword: $worker AND labels.namespace.keyword: $namespace",
+              "query": "uuid.keyword: $uuid AND metricName: \"podCPU\" AND labels.node.keyword: \"$worker\" AND labels.namespace.keyword: \"$namespace\"",
               "refId": "A",
               "timeField": "timestamp"
             }
@@ -2636,7 +2637,7 @@
             "h": 9,
             "w": 12,
             "x": 12,
-            "y": 4
+            "y": 8
           },
           "hiddenSeries": false,
           "id": 85,
@@ -2711,7 +2712,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "uuid.keyword: $uuid AND metricName: \"podMemory\" AND labels.node.keyword: $worker AND labels.namespace.keyword: $namespace",
+              "query": "uuid.keyword: $uuid AND metricName: \"podMemory\" AND labels.node.keyword: \"$worker\" AND labels.namespace.keyword: \"$namespace\"",
               "refId": "A",
               "timeField": "timestamp"
             }
@@ -2778,7 +2779,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 13
+            "y": 17
           },
           "hiddenSeries": false,
           "id": 68,
@@ -2857,7 +2858,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "uuid.keyword: $uuid AND metricName: \"nodeCPU\" AND labels.instance.keyword: $worker",
+              "query": "uuid.keyword: $uuid AND metricName: \"nodeCPU\" AND labels.instance.keyword: \"$worker\"",
               "refId": "A",
               "timeField": "timestamp"
             }
@@ -2923,7 +2924,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 13
+            "y": 17
           },
           "hiddenSeries": false,
           "id": 41,
@@ -2985,7 +2986,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "uuid.keyword: $uuid AND metricName: \"nodeMemoryAvailable\" AND labels.instance.keyword: $worker",
+              "query": "uuid.keyword: $uuid AND metricName: \"nodeMemoryAvailable\" AND labels.instance.keyword: \"$worker\"",
               "refId": "A",
               "timeField": "timestamp"
             },
@@ -3015,7 +3016,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "uuid.keyword: $uuid AND metricName: \"nodeMemoryCached+nodeMemoryBuffers\" AND labels.instance.keyword: $worker",
+              "query": "uuid.keyword: $uuid AND metricName: \"nodeMemoryCached+nodeMemoryBuffers\" AND labels.instance.keyword: \"$worker\"",
               "refId": "B",
               "timeField": "timestamp"
             },
@@ -3045,7 +3046,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "uuid.keyword: $uuid AND metricName: \"nodeMemoryActive\" AND labels.instance.keyword: $worker",
+              "query": "uuid.keyword: $uuid AND metricName: \"nodeMemoryActive\" AND labels.instance.keyword: \"$worker\"",
               "refId": "C",
               "timeField": "timestamp"
             }
@@ -3111,7 +3112,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 21
+            "y": 25
           },
           "hiddenSeries": false,
           "id": 43,
@@ -3298,7 +3299,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 21
+            "y": 25
           },
           "hiddenSeries": false,
           "id": 67,
@@ -3485,7 +3486,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 29
+            "y": 33
           },
           "hiddenSeries": false,
           "id": 47,
@@ -3612,7 +3613,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 29
+            "y": 33
           },
           "hiddenSeries": false,
           "id": 63,
@@ -3798,7 +3799,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 24
+        "y": 83
       },
       "id": 21,
       "panels": [
@@ -4488,10 +4489,147 @@
           "fill": 1,
           "fillGradient": 0,
           "gridPos": {
-            "h": 9,
+            "h": 8,
             "w": 12,
             "x": 12,
             "y": 26
+          },
+          "hiddenSeries": false,
+          "id": 325,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "hideEmpty": true,
+            "hideZero": true,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "sort": "total",
+            "sortDesc": true,
+            "total": true,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "percentage": false,
+          "pluginVersion": "7.1.4",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "{{term labels.resource.keyword}}",
+              "bucketAggs": [
+                {
+                  "$$hashKey": "object:563",
+                  "fake": true,
+                  "field": "labels.resource.keyword",
+                  "id": "3",
+                  "settings": {
+                    "min_doc_count": "1",
+                    "order": "desc",
+                    "orderBy": "_term",
+                    "size": "10"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "$$hashKey": "object:280",
+                  "field": "timestamp",
+                  "id": "2",
+                  "settings": {
+                    "interval": "30s",
+                    "min_doc_count": "1",
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "metrics": [
+                {
+                  "$$hashKey": "object:278",
+                  "field": "value",
+                  "id": "1",
+                  "meta": {},
+                  "settings": {},
+                  "type": "avg"
+                }
+              ],
+              "query": "uuid: $uuid AND metricName.keyword: etcdObjectCount",
+              "refId": "A",
+              "timeField": "timestamp"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Etcd object count rate",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:301",
+              "format": "none",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:302",
+              "decimals": null,
+              "format": "none",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$Datasource",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 9,
+            "w": 12,
+            "x": 12,
+            "y": 34
           },
           "hiddenSeries": false,
           "id": 30,
@@ -4745,1325 +4883,1403 @@
       "type": "row"
     },
     {
-      "collapsed": true,
+      "collapsed": false,
       "datasource": "${DS_ELASTICSEARCH}",
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 25
+        "y": 84
       },
       "id": 11,
-      "panels": [
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "$Datasource",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 9,
-            "w": 12,
-            "x": 0,
-            "y": 10
-          },
-          "hiddenSeries": false,
-          "id": 108,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": false,
-            "max": false,
-            "min": false,
-            "rightSide": false,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "percentage": false,
-          "pluginVersion": "7.1.4",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "scopedVars": {
-            "master": {
-              "isNone": true,
-              "selected": true,
-              "text": "None",
-              "value": ""
-            }
-          },
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "alias": "{{labels.pod.keyword}}",
-              "bucketAggs": [
-                {
-                  "$$hashKey": "object:159",
-                  "fake": true,
-                  "field": "labels.pod.keyword",
-                  "id": "3",
-                  "settings": {
-                    "min_doc_count": "1",
-                    "order": "desc",
-                    "orderBy": "1",
-                    "size": "5"
-                  },
-                  "type": "terms"
-                },
-                {
-                  "$$hashKey": "object:33",
-                  "field": "timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "30s",
-                    "min_doc_count": "1",
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "metrics": [
-                {
-                  "$$hashKey": "object:31",
-                  "field": "value",
-                  "id": "1",
-                  "inlineScript": null,
-                  "meta": {},
-                  "settings": {},
-                  "type": "avg"
-                }
-              ],
-              "query": "uuid.keyword: $uuid AND metricName: \"podCPU\" AND labels.node.keyword: $master AND labels.namespace.keyword: $namespace",
-              "refId": "A",
-              "timeField": "timestamp"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Top 5 CPU  usage $master",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:65",
-              "format": "percent",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "$$hashKey": "object:66",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "$Datasource",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 9,
-            "w": 12,
-            "x": 12,
-            "y": 10
-          },
-          "hiddenSeries": false,
-          "id": 110,
-          "legend": {
-            "alignAsTable": true,
-            "avg": false,
-            "current": false,
-            "max": true,
-            "min": false,
-            "rightSide": false,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "percentage": false,
-          "pluginVersion": "7.1.4",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "scopedVars": {
-            "master": {
-              "isNone": true,
-              "selected": true,
-              "text": "None",
-              "value": ""
-            }
-          },
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "alias": "{{labels.pod.keyword}}",
-              "bucketAggs": [
-                {
-                  "$$hashKey": "object:159",
-                  "fake": true,
-                  "field": "labels.pod.keyword",
-                  "id": "3",
-                  "settings": {
-                    "min_doc_count": "1",
-                    "order": "desc",
-                    "orderBy": "1",
-                    "size": "5"
-                  },
-                  "type": "terms"
-                },
-                {
-                  "$$hashKey": "object:33",
-                  "field": "timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "30s",
-                    "min_doc_count": "1",
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "metrics": [
-                {
-                  "$$hashKey": "object:31",
-                  "field": "value",
-                  "id": "1",
-                  "inlineScript": null,
-                  "meta": {},
-                  "settings": {},
-                  "type": "avg"
-                }
-              ],
-              "query": "uuid.keyword: $uuid AND metricName: \"podMemory\" AND labels.node.keyword: $master AND labels.namespace.keyword: $namespace",
-              "refId": "A",
-              "timeField": "timestamp"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Top 5 memory usage $master",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:65",
-              "decimals": null,
-              "format": "bytes",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "$$hashKey": "object:66",
-              "format": "bytes",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": false
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "$Datasource",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 9,
-            "w": 12,
-            "x": 0,
-            "y": 19
-          },
-          "hiddenSeries": false,
-          "id": 2,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": false,
-            "max": false,
-            "min": false,
-            "rightSide": true,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "percentage": false,
-          "pluginVersion": "7.1.4",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "scopedVars": {
-            "master": {
-              "isNone": true,
-              "selected": true,
-              "text": "None",
-              "value": ""
-            }
-          },
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "alias": "{{labels.mode.keyword}}",
-              "bucketAggs": [
-                {
-                  "$$hashKey": "object:133",
-                  "fake": true,
-                  "field": "labels.mode.keyword",
-                  "id": "4",
-                  "settings": {
-                    "min_doc_count": "1",
-                    "order": "desc",
-                    "orderBy": "1",
-                    "size": "10"
-                  },
-                  "type": "terms"
-                },
-                {
-                  "$$hashKey": "object:33",
-                  "field": "timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "auto",
-                    "min_doc_count": "1",
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "metrics": [
-                {
-                  "$$hashKey": "object:31",
-                  "field": "value",
-                  "id": "1",
-                  "inlineScript": "_value*100",
-                  "meta": {},
-                  "settings": {
-                    "script": {
-                      "inline": "_value*100"
-                    }
-                  },
-                  "type": "avg"
-                }
-              ],
-              "query": "uuid.keyword: $uuid AND metricName: \"nodeCPU\" AND labels.instance.keyword: $master",
-              "refId": "A",
-              "timeField": "timestamp"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "CPU $master",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:65",
-              "format": "percent",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "$$hashKey": "object:66",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "$Datasource",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 9,
-            "w": 12,
-            "x": 12,
-            "y": 19
-          },
-          "hiddenSeries": false,
-          "id": 9,
-          "legend": {
-            "alignAsTable": true,
-            "avg": false,
-            "current": false,
-            "max": true,
-            "min": false,
-            "rightSide": true,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "percentage": false,
-          "pluginVersion": "7.1.4",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "scopedVars": {
-            "master": {
-              "isNone": true,
-              "selected": true,
-              "text": "None",
-              "value": ""
-            }
-          },
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "alias": "available",
-              "bucketAggs": [
-                {
-                  "$$hashKey": "object:33",
-                  "field": "timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "30s",
-                    "min_doc_count": "1",
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "metrics": [
-                {
-                  "$$hashKey": "object:31",
-                  "field": "value",
-                  "id": "1",
-                  "inlineScript": null,
-                  "meta": {},
-                  "settings": {},
-                  "type": "avg"
-                }
-              ],
-              "query": "uuid.keyword: $uuid AND metricName: \"nodeMemoryAvailable\" AND labels.instance.keyword: $master",
-              "refId": "A",
-              "timeField": "timestamp"
-            },
-            {
-              "alias": "cached+buffers",
-              "bucketAggs": [
-                {
-                  "$$hashKey": "object:33",
-                  "field": "timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "30s",
-                    "min_doc_count": "1",
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "metrics": [
-                {
-                  "$$hashKey": "object:31",
-                  "field": "value",
-                  "id": "1",
-                  "inlineScript": null,
-                  "meta": {},
-                  "settings": {},
-                  "type": "avg"
-                }
-              ],
-              "query": "uuid.keyword: $uuid AND metricName: \"nodeMemoryCached+nodeMemoryBuffers\" AND labels.instance.keyword: $master",
-              "refId": "B",
-              "timeField": "timestamp"
-            },
-            {
-              "alias": "active",
-              "bucketAggs": [
-                {
-                  "$$hashKey": "object:33",
-                  "field": "timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "30s",
-                    "min_doc_count": "1",
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "metrics": [
-                {
-                  "$$hashKey": "object:31",
-                  "field": "value",
-                  "id": "1",
-                  "inlineScript": null,
-                  "meta": {},
-                  "settings": {},
-                  "type": "avg"
-                }
-              ],
-              "query": "uuid.keyword: $uuid AND metricName: \"nodeMemoryActive\" AND labels.instance.keyword: $master",
-              "refId": "C",
-              "timeField": "timestamp"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Memory $master",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:65",
-              "format": "bytes",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "$$hashKey": "object:66",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "$Datasource",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 28
-          },
-          "hiddenSeries": false,
-          "id": 4,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "percentage": false,
-          "pluginVersion": "7.1.4",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "scopedVars": {
-            "master": {
-              "isNone": true,
-              "selected": true,
-              "text": "None",
-              "value": ""
-            }
-          },
-          "seriesOverrides": [
-            {
-              "$$hashKey": "object:1248",
-              "alias": "/rxNetworkBytes.*/",
-              "transform": "negative-Y"
-            }
-          ],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "alias": "txNetworkBytes - {{labels.device.keyword}}",
-              "bucketAggs": [
-                {
-                  "$$hashKey": "object:1174",
-                  "fake": true,
-                  "field": "labels.device.keyword",
-                  "id": "3",
-                  "settings": {
-                    "min_doc_count": "1",
-                    "order": "desc",
-                    "orderBy": "_term",
-                    "size": "10"
-                  },
-                  "type": "terms"
-                },
-                {
-                  "$$hashKey": "object:1089",
-                  "field": "timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "30s",
-                    "min_doc_count": 0,
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "metrics": [
-                {
-                  "$$hashKey": "object:1087",
-                  "field": "value",
-                  "id": "1",
-                  "meta": {},
-                  "settings": {},
-                  "type": "avg"
-                }
-              ],
-              "query": "uuid: $uuid AND metricName: \"txNetworkBytes\" AND labels.instance.keyword: \"$master\"",
-              "refId": "A",
-              "timeField": "timestamp"
-            },
-            {
-              "alias": "rxNetworkBytes - {{labels.device.keyword}}",
-              "bucketAggs": [
-                {
-                  "$$hashKey": "object:1215",
-                  "fake": true,
-                  "field": "labels.device.keyword",
-                  "id": "3",
-                  "settings": {
-                    "min_doc_count": "1",
-                    "order": "desc",
-                    "orderBy": "_term",
-                    "size": "10"
-                  },
-                  "type": "terms"
-                },
-                {
-                  "$$hashKey": "object:1195",
-                  "field": "timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "30s",
-                    "min_doc_count": 0,
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "metrics": [
-                {
-                  "$$hashKey": "object:1193",
-                  "field": "value",
-                  "id": "1",
-                  "inlineScript": null,
-                  "meta": {},
-                  "settings": {},
-                  "type": "avg"
-                }
-              ],
-              "query": "uuid: $uuid AND  metricName: \"rxNetworkBytes\" AND labels.instance.keyword: \"$master\"",
-              "refId": "B",
-              "timeField": "timestamp"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Network bytes $master",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:1121",
-              "format": "Bps",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "$$hashKey": "object:1122",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "$Datasource",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 28
-          },
-          "hiddenSeries": false,
-          "id": 35,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "percentage": false,
-          "pluginVersion": "7.1.4",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "scopedVars": {
-            "master": {
-              "isNone": true,
-              "selected": true,
-              "text": "None",
-              "value": ""
-            }
-          },
-          "seriesOverrides": [
-            {
-              "$$hashKey": "object:1248",
-              "alias": "/Read.+/",
-              "transform": "negative-Y"
-            }
-          ],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "alias": "Written bytes - {{labels.device.keyword}}",
-              "bucketAggs": [
-                {
-                  "$$hashKey": "object:554",
-                  "fake": true,
-                  "field": "labels.device.keyword",
-                  "id": "3",
-                  "settings": {
-                    "min_doc_count": "1",
-                    "order": "desc",
-                    "orderBy": "_term",
-                    "size": "10"
-                  },
-                  "type": "terms"
-                },
-                {
-                  "$$hashKey": "object:1089",
-                  "field": "timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "30s",
-                    "min_doc_count": 0,
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "metrics": [
-                {
-                  "$$hashKey": "object:1087",
-                  "field": "value",
-                  "id": "1",
-                  "meta": {},
-                  "settings": {},
-                  "type": "avg"
-                }
-              ],
-              "query": "uuid: $uuid AND metricName: \"nodeDiskWrittenBytes\" AND labels.instance.keyword: \"$master\"",
-              "refId": "A",
-              "timeField": "timestamp"
-            },
-            {
-              "alias": "Read bytes - {{labels.device.keyword}}",
-              "bucketAggs": [
-                {
-                  "$$hashKey": "object:571",
-                  "fake": true,
-                  "field": "labels.device.keyword",
-                  "id": "3",
-                  "settings": {
-                    "min_doc_count": "1",
-                    "order": "desc",
-                    "orderBy": "_term",
-                    "size": "10"
-                  },
-                  "type": "terms"
-                },
-                {
-                  "$$hashKey": "object:1195",
-                  "field": "timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "30s",
-                    "min_doc_count": 0,
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "metrics": [
-                {
-                  "$$hashKey": "object:1193",
-                  "field": "value",
-                  "id": "1",
-                  "inlineScript": null,
-                  "meta": {},
-                  "settings": {},
-                  "type": "avg"
-                }
-              ],
-              "query": "uuid: $uuid AND  metricName: \"nodeDiskReadBytes\" AND labels.instance.keyword: \"$master\"",
-              "refId": "B",
-              "timeField": "timestamp"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Disk $master",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:1121",
-              "format": "Bps",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "$$hashKey": "object:1122",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "$Datasource",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 36
-          },
-          "hiddenSeries": false,
-          "id": 8,
-          "legend": {
-            "alignAsTable": true,
-            "avg": false,
-            "current": false,
-            "max": true,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "percentage": false,
-          "pluginVersion": "7.1.4",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "scopedVars": {
-            "master": {
-              "isNone": true,
-              "selected": true,
-              "text": "None",
-              "value": ""
-            }
-          },
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "alias": "Conntrack entries",
-              "bucketAggs": [
-                {
-                  "$$hashKey": "object:1885",
-                  "field": "timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "30s",
-                    "min_doc_count": "1",
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "metrics": [
-                {
-                  "$$hashKey": "object:1883",
-                  "field": "value",
-                  "id": "1",
-                  "meta": {},
-                  "settings": {},
-                  "type": "avg"
-                }
-              ],
-              "query": "uuid.keyword: $uuid AND metricName: \"nodeConntrackEntries\" AND labels.instance.keyword: $master",
-              "refId": "A",
-              "timeField": "timestamp"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Conntrack entries $master",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:393",
-              "format": "none",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "$$hashKey": "object:394",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "$Datasource",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 36
-          },
-          "hiddenSeries": false,
-          "id": 6,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "hideEmpty": true,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "percentage": false,
-          "pluginVersion": "7.1.4",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "scopedVars": {
-            "master": {
-              "isNone": true,
-              "selected": true,
-              "text": "None",
-              "value": ""
-            }
-          },
-          "seriesOverrides": [
-            {
-              "$$hashKey": "object:1826",
-              "alias": "/rxDroppedPackets.*/",
-              "transform": "negative-Y"
-            }
-          ],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "alias": "txDroppedPackets - {{labels.device.keyword}}",
-              "bucketAggs": [
-                {
-                  "$$hashKey": "object:1751",
-                  "fake": true,
-                  "field": "labels.device.keyword",
-                  "id": "3",
-                  "settings": {
-                    "min_doc_count": 0,
-                    "order": "desc",
-                    "orderBy": "_term",
-                    "size": "10"
-                  },
-                  "type": "terms"
-                },
-                {
-                  "$$hashKey": "object:1370",
-                  "field": "timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "30s",
-                    "min_doc_count": 0,
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "hide": false,
-              "metrics": [
-                {
-                  "$$hashKey": "object:1368",
-                  "field": "value",
-                  "id": "1",
-                  "meta": {},
-                  "settings": {},
-                  "type": "avg"
-                }
-              ],
-              "query": "uuid: $uuid AND metricName: \"txDroppedPackets\" AND labels.instance.keyword: $master",
-              "refId": "A",
-              "timeField": "timestamp"
-            },
-            {
-              "alias": "rxDroppedPackets - {{labels.device.keyword}}",
-              "bucketAggs": [
-                {
-                  "$$hashKey": "object:1768",
-                  "fake": true,
-                  "field": "labels.device.keyword",
-                  "id": "3",
-                  "settings": {
-                    "min_doc_count": 0,
-                    "order": "desc",
-                    "orderBy": "_term",
-                    "size": "10"
-                  },
-                  "type": "terms"
-                },
-                {
-                  "$$hashKey": "object:1594",
-                  "field": "timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "30s",
-                    "min_doc_count": 0,
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "hide": false,
-              "metrics": [
-                {
-                  "$$hashKey": "object:1592",
-                  "field": "value",
-                  "id": "1",
-                  "meta": {},
-                  "settings": {},
-                  "type": "avg"
-                }
-              ],
-              "query": "uuid: $uuid AND metricName: \"rxDroppedPackets\" AND labels.instance.keyword: $master",
-              "refId": "B",
-              "timeField": "timestamp"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Dropped packets $master",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:1701",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "$$hashKey": "object:1702",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        }
-      ],
+      "panels": [],
       "repeat": "master",
       "title": "Master: $master",
       "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$Datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 85
+      },
+      "hiddenSeries": false,
+      "id": 108,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pluginVersion": "7.1.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "{{labels.pod.keyword}}",
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:159",
+              "fake": true,
+              "field": "labels.pod.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "5"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:33",
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "30s",
+                "min_doc_count": "1",
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "$$hashKey": "object:31",
+              "field": "value",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "uuid.keyword: $uuid AND metricName: \"podCPU\" AND labels.node.keyword: $master AND labels.namespace.keyword: $namespace",
+          "refId": "A",
+          "timeField": "timestamp"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Top 5 CPU  usage $master",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:65",
+          "format": "percent",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:66",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$Datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 85
+      },
+      "hiddenSeries": false,
+      "id": 110,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "max": true,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pluginVersion": "7.1.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "{{labels.pod.keyword}}",
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:159",
+              "fake": true,
+              "field": "labels.pod.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "5"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:33",
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "30s",
+                "min_doc_count": "1",
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "$$hashKey": "object:31",
+              "field": "value",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "uuid.keyword: $uuid AND metricName: \"podMemory\" AND labels.node.keyword: $master AND labels.namespace.keyword: $namespace",
+          "refId": "A",
+          "timeField": "timestamp"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Top 5 memory usage $master",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:65",
+          "decimals": null,
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:66",
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$Datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 94
+      },
+      "hiddenSeries": false,
+      "id": 323,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pluginVersion": "7.1.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "{{labels.container.keyword}}: {{labels.device.keyword}}",
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:585",
+              "fake": true,
+              "field": "labels.device.keyword",
+              "id": "4",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:576",
+              "fake": true,
+              "field": "labels.container.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:543",
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "1",
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "$$hashKey": "object:541",
+              "field": "value",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "uuid.keyword: $uuid AND metricName: \"containerDiskUsage\" AND labels.node.keyword: $master",
+          "refId": "A",
+          "timeField": "timestamp"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Container disk write rate: $master",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:616",
+          "format": "Bps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:617",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$Datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 94
+      },
+      "hiddenSeries": false,
+      "id": 9,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pluginVersion": "7.1.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "available",
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:33",
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "30s",
+                "min_doc_count": "1",
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "$$hashKey": "object:31",
+              "field": "value",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "uuid.keyword: $uuid AND metricName: \"nodeMemoryAvailable\" AND labels.instance.keyword: $master",
+          "refId": "A",
+          "timeField": "timestamp"
+        },
+        {
+          "alias": "cached+buffers",
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:33",
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "30s",
+                "min_doc_count": "1",
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "$$hashKey": "object:31",
+              "field": "value",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "uuid.keyword: $uuid AND metricName: \"nodeMemoryCached+nodeMemoryBuffers\" AND labels.instance.keyword: $master",
+          "refId": "B",
+          "timeField": "timestamp"
+        },
+        {
+          "alias": "active",
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:33",
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "30s",
+                "min_doc_count": "1",
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "$$hashKey": "object:31",
+              "field": "value",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "uuid.keyword: $uuid AND metricName: \"nodeMemoryActive\" AND labels.instance.keyword: $master",
+          "refId": "C",
+          "timeField": "timestamp"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Memory $master",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:65",
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:66",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$Datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 102
+      },
+      "hiddenSeries": false,
+      "id": 2,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pluginVersion": "7.1.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "{{labels.mode.keyword}}",
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:133",
+              "fake": true,
+              "field": "labels.mode.keyword",
+              "id": "4",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:33",
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "1",
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "$$hashKey": "object:31",
+              "field": "value",
+              "id": "1",
+              "inlineScript": "_value*100",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value*100"
+                }
+              },
+              "type": "avg"
+            }
+          ],
+          "query": "uuid.keyword: $uuid AND metricName: \"nodeCPU\" AND labels.instance.keyword: $master",
+          "refId": "A",
+          "timeField": "timestamp"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "CPU $master",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:65",
+          "format": "percent",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:66",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$Datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 103
+      },
+      "hiddenSeries": false,
+      "id": 35,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pluginVersion": "7.1.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "$$hashKey": "object:1248",
+          "alias": "/Read.+/",
+          "transform": "negative-Y"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Written bytes - {{labels.device.keyword}}",
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:554",
+              "fake": true,
+              "field": "labels.device.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:1089",
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "30s",
+                "min_doc_count": "1",
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "$$hashKey": "object:1087",
+              "field": "value",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "uuid: $uuid AND metricName: \"nodeDiskWrittenBytes\" AND labels.instance.keyword: \"$master\"",
+          "refId": "A",
+          "timeField": "timestamp"
+        },
+        {
+          "alias": "Read bytes - {{labels.device.keyword}}",
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:571",
+              "fake": true,
+              "field": "labels.device.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:1195",
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "30s",
+                "min_doc_count": "1",
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "$$hashKey": "object:1193",
+              "field": "value",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "uuid: $uuid AND  metricName: \"nodeDiskReadBytes\" AND labels.instance.keyword: \"$master\"",
+          "refId": "B",
+          "timeField": "timestamp"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Disk $master",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1121",
+          "format": "Bps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1122",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$Datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 111
+      },
+      "hiddenSeries": false,
+      "id": 4,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pluginVersion": "7.1.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "$$hashKey": "object:1248",
+          "alias": "/rxNetworkBytes.*/",
+          "transform": "negative-Y"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "txNetworkBytes - {{labels.device.keyword}}",
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:1174",
+              "fake": true,
+              "field": "labels.device.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:1089",
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "30s",
+                "min_doc_count": "1",
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "$$hashKey": "object:1087",
+              "field": "value",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "uuid: $uuid AND metricName: \"txNetworkBytes\" AND labels.instance.keyword: \"$master\"",
+          "refId": "A",
+          "timeField": "timestamp"
+        },
+        {
+          "alias": "rxNetworkBytes - {{labels.device.keyword}}",
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:1215",
+              "fake": true,
+              "field": "labels.device.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:1195",
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "30s",
+                "min_doc_count": "1",
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "$$hashKey": "object:1193",
+              "field": "value",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "uuid: $uuid AND  metricName: \"rxNetworkBytes\" AND labels.instance.keyword: \"$master\"",
+          "refId": "B",
+          "timeField": "timestamp"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Network bytes $master",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1121",
+          "format": "Bps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1122",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$Datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 111
+      },
+      "hiddenSeries": false,
+      "id": 6,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "hideEmpty": true,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pluginVersion": "7.1.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "$$hashKey": "object:1826",
+          "alias": "/rxDroppedPackets.*/",
+          "transform": "negative-Y"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "txDroppedPackets - {{labels.device.keyword}}",
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:1751",
+              "fake": true,
+              "field": "labels.device.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:1370",
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "30s",
+                "min_doc_count": "1",
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "hide": false,
+          "metrics": [
+            {
+              "$$hashKey": "object:1368",
+              "field": "value",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "uuid: $uuid AND metricName: \"txDroppedPackets\" AND labels.instance.keyword: $master",
+          "refId": "A",
+          "timeField": "timestamp"
+        },
+        {
+          "alias": "rxDroppedPackets - {{labels.device.keyword}}",
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:1768",
+              "fake": true,
+              "field": "labels.device.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:1594",
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "30s",
+                "min_doc_count": "1",
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "hide": false,
+          "metrics": [
+            {
+              "$$hashKey": "object:1592",
+              "field": "value",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "uuid: $uuid AND metricName: \"rxDroppedPackets\" AND labels.instance.keyword: $master",
+          "refId": "B",
+          "timeField": "timestamp"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Dropped packets $master",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1701",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1702",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$Datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 119
+      },
+      "hiddenSeries": false,
+      "id": 8,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "max": true,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pluginVersion": "7.1.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Conntrack entries",
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:1885",
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "30s",
+                "min_doc_count": "1",
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "$$hashKey": "object:1883",
+              "field": "value",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "uuid.keyword: $uuid AND metricName: \"nodeConntrackEntries\" AND labels.instance.keyword: $master",
+          "refId": "A",
+          "timeField": "timestamp"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Conntrack entries $master",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:393",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:394",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     }
   ],
   "refresh": false,
@@ -6074,9 +6290,9 @@
     "list": [
       {
         "current": {
-          "selected": false,
-          "text": "Public-AWS-ES_kube-burner",
-          "value": "Public-AWS-ES_kube-burner"
+          "selected": true,
+          "text": "ripsaw-kube-burner-public-dev",
+          "value": "ripsaw-kube-burner-public-dev"
         },
         "hide": 0,
         "includeAll": false,
@@ -6117,14 +6333,14 @@
         "allValue": null,
         "current": {},
         "datasource": "$Datasource",
-        "definition": "{ \"find\" : \"terms\", \"field\": \"labels.node.keyword\",  \"query\": \"uuid.keyword: $uuid\", \"query\": \"metricName.keyword: nodeRoles\",  \"query\": \"labels.role.keyword: master\"}",
+        "definition": "{ \"find\" : \"terms\", \"field\": \"labels.node.keyword\", \"query\": \"metricName.keyword: nodeRoles AND labels.role.keyword: master AND uuid.keyword: $uuid\"}",
         "hide": 0,
-        "includeAll": false,
+        "includeAll": true,
         "label": "Master nodes",
         "multi": true,
         "name": "master",
         "options": [],
-        "query": "{ \"find\" : \"terms\", \"field\": \"labels.node.keyword\",  \"query\": \"uuid.keyword: $uuid\", \"query\": \"metricName.keyword: nodeRoles\",  \"query\": \"labels.role.keyword: master\"}",
+        "query": "{ \"find\" : \"terms\", \"field\": \"labels.node.keyword\", \"query\": \"metricName.keyword: nodeRoles AND labels.role.keyword: master AND uuid.keyword: $uuid\"}",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -6139,14 +6355,14 @@
         "allValue": null,
         "current": {},
         "datasource": "$Datasource",
-        "definition": "{ \"find\" : \"terms\", \"field\": \"labels.node.keyword\",  \"query\": \"uuid.keyword: $uuid\", \"query\": \"metricName.keyword: nodeRoles\",  \"query\": \"labels.role.keyword: worker\"}",
+        "definition": "{ \"find\" : \"terms\", \"field\": \"labels.node.keyword\", \"query\": \"metricName.keyword: nodeRoles AND labels.role.keyword: worker AND uuid.keyword: $uuid\"}",
         "hide": 0,
         "includeAll": false,
         "label": "Worker nodes",
         "multi": true,
         "name": "worker",
         "options": [],
-        "query": "{ \"find\" : \"terms\", \"field\": \"labels.node.keyword\",  \"query\": \"uuid.keyword: $uuid\", \"query\": \"metricName.keyword: nodeRoles\",  \"query\": \"labels.role.keyword: worker\"}",
+        "query": "{ \"find\" : \"terms\", \"field\": \"labels.node.keyword\", \"query\": \"metricName.keyword: nodeRoles AND labels.role.keyword: worker AND uuid.keyword: $uuid\"}",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -6161,14 +6377,14 @@
         "allValue": null,
         "current": {},
         "datasource": "$Datasource",
-        "definition": "{ \"find\" : \"terms\", \"field\": \"labels.node.keyword\",  \"query\": \"uuid.keyword: $uuid\", \"query\": \"metricName.keyword: nodeRoles\",  \"query\": \"labels.role.keyword: infra\"}",
+        "definition": "{ \"find\" : \"terms\", \"field\": \"labels.node.keyword\",  \"query\": \"metricName.keyword: nodeRoles AND labels.role.keyword: infra AND uuid.keyword: $uuid\"}",
         "hide": 0,
         "includeAll": false,
         "label": "Infra nodes",
         "multi": true,
         "name": "infra",
         "options": [],
-        "query": "{ \"find\" : \"terms\", \"field\": \"labels.node.keyword\",  \"query\": \"uuid.keyword: $uuid\", \"query\": \"metricName.keyword: nodeRoles\",  \"query\": \"labels.role.keyword: infra\"}",
+        "query": "{ \"find\" : \"terms\", \"field\": \"labels.node.keyword\",  \"query\": \"metricName.keyword: nodeRoles AND labels.role.keyword: infra AND uuid.keyword: $uuid\"}",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -6183,14 +6399,14 @@
         "allValue": null,
         "current": {},
         "datasource": "$Datasource",
-        "definition": "{ \"find\" : \"terms\", \"field\": \"labels.namespace.keyword\", \"query\": \"uuid.keyword: $uuid\", \"query\": \"labels.namespace.keyword: /openshift-.*/\"}",
+        "definition": "{ \"find\" : \"terms\", \"field\": \"labels.namespace.keyword\", \"query\": \"labels.namespace.keyword: /openshift-.*/ AND uuid.keyword: $uuid\"}",
         "hide": 0,
         "includeAll": true,
         "label": "Namespace",
         "multi": true,
         "name": "namespace",
         "options": [],
-        "query": "{ \"find\" : \"terms\", \"field\": \"labels.namespace.keyword\", \"query\": \"uuid.keyword: $uuid\", \"query\": \"labels.namespace.keyword: /openshift-.*/\"}",
+        "query": "{ \"find\" : \"terms\", \"field\": \"labels.namespace.keyword\", \"query\": \"labels.namespace.keyword: /openshift-.*/ AND uuid.keyword: $uuid\"}",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -6204,7 +6420,7 @@
     ]
   },
   "time": {
-    "from": "now-2d",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {
@@ -6224,5 +6440,5 @@
   "timezone": "",
   "title": "Kube-burner report",
   "uid": "hIBqKNvMz",
-  "version": 26
+  "version": 31
 }
