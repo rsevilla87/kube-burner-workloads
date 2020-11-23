@@ -8,16 +8,16 @@ metrics:
   - query: sum(container_memory_rss{name!="",namespace=~"openshift-(etcd|oauth-apiserver|.*apiserver|ovn-kubernetes|sdn|ingress|authentication|.*controller-manager|.*scheduler)"}) by (pod, namespace, node)
     metricName: podMemory
 
-  - query: topk(3,sum(irate(process_cpu_seconds_total{service="kubelet",job="kubelet"}[2m]) * 100) by (node))
+  - query: sum(irate(process_cpu_seconds_total{service="kubelet",job="kubelet"}[2m]) * 100) by (node) and on (node) kube_node_role{role="worker"}
     metricName: top3KubeletCPU
 
-  - query: topk(3,sum(process_resident_memory_bytes{service="kubelet",job="kubelet"}) by (node))
+  - query: sum(process_resident_memory_bytes{service="kubelet",job="kubelet"}) by (node) and on (node) kube_node_role{role="worker"}
     metricName: top3KubeletMemory
 
-  - query: topk(3,sum(irate(process_cpu_seconds_total{service="kubelet",job="crio"}[2m]) * 100) by (node))
+  - query: sum(irate(process_cpu_seconds_total{service="kubelet",job="crio"}[2m]) * 100) by (node) and on (node) kube_node_role{role="worker"}
     metricName: top3CrioCPU
 
-  - query: topk(3,sum(process_resident_memory_bytes{service="kubelet",job="crio"}) by (node))
+  - query: sum(process_resident_memory_bytes{service="kubelet",job="crio"}) by (node) and on (node) kube_node_role{role="worker"}
     metricName: top3CrioMemory
 
   - query: sum(irate(node_cpu_seconds_total[2m])) by (mode,instance) > 0
@@ -49,9 +49,6 @@ metrics:
 
   - query: rate(node_disk_read_bytes_total{device!~"^(dm|rb).*"}[2m])
     metricName: nodeDiskReadBytes
-
-  - query: node_nf_conntrack_entries
-    metricName: nodeConntrackEntries
 
   - query: sum(rate(etcd_server_leader_changes_seen_total[2m]))
     metricName: etcdLeaderChangesRate
@@ -85,6 +82,7 @@ metrics:
 
   - query: kube_node_role
     metricName: nodeRoles
+    instant: true
 
   - query: sum(kube_node_status_condition{status="true"}) by (condition)
     metricName: nodeStatus
@@ -95,3 +93,10 @@ metrics:
   - query: sum(rate(etcd_object_counts{}[5m])) by (resource) > 0
     metricName: etcdObjectCount
 
+  - query: cluster_version{type="completed"}
+    metricName: clusterVersion
+    instant: true
+
+  - query: sum by (cluster_version)(etcd_cluster_version)
+    metricName: etcdVersion
+    instant: true
