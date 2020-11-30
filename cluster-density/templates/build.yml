@@ -4,6 +4,8 @@ apiVersion: build.openshift.io/v1
 metadata:
   name: {{.JobName}}-{{.Replica}}
 spec:
+  nodeSelector:
+    node-role.kubernetes.io/worker: ""
   serviceAccount: builder
   source:
     dockerfile: |-
