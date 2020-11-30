@@ -8,6 +8,8 @@ spec:
       labels:
         name: postgres-{{.Replica}}-{{.Iteration}}
     spec:
+      nodeSelector:
+        node-role.kubernetes.io/worker: ""
       containers:
       - name: postgresql
         image: registry.redhat.io/rhscl/postgresql-10-rhel7:latest
