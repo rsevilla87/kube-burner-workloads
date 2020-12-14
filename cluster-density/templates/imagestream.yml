@@ -4,6 +4,6 @@ apiVersion: image.openshift.io/v1
 metadata:
   name: {{.prefix}}-{{.Replica}}
 spec:
-{{ if .image }}
+{{ if index . "image" }}
   dockerImageRepository: {{.image}}
 {{ end }}
