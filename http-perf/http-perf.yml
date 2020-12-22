@@ -1,0 +1,32 @@
+---
+jobs:
+  - name: http-perf
+    jobIterations: 1
+    qps: 25
+    burst: 25
+    namespacedIterations: false
+    namespace: http-perf
+    waitWhenFinished: true
+    objects:
+
+      - objectTemplate: templates/nginx-pod.yml
+        replicas: 100
+        inputVars:
+          nodeSelector: "{node-role.kubernetes.io/worker: }"
+
+      - objectTemplate: templates/http-service.yml
+        replicas: 100
+
+      - objectTemplate: templates/http-route.yml
+        replicas: 100
+
+      - objectTemplate: templates/http-edge-route.yml
+        replicas: 100
+
+      - objectTemplate: templates/http-passthrough-route.yml
+        replicas: 100
+
+      - objectTemplate: templates/http-client.yml
+        replicas: 1
+        inputVars:
+          nodeSelector: "{node-role.kubernetes.io/workload: }"
