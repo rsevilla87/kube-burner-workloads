@@ -2,8 +2,8 @@
 jobs:
   - name: http-perf
     jobIterations: 1
-    qps: 25
-    burst: 25
+    qps: 100
+    burst: 100
     namespacedIterations: false
     namespace: http-perf
     waitWhenFinished: true
@@ -26,7 +26,23 @@ jobs:
       - objectTemplate: templates/http-passthrough-route.yml
         replicas: 100
 
+      - objectTemplate: templates/http-reencrypt-route.yml
+        replicas: 100
+
+  - name: http-perf-client
+    jobIterations: 1
+    namespacedIterations: false
+    namespace: http-perf-client
+    waitWhenFinished: true
+    objects:
+
       - objectTemplate: templates/http-client.yml
         replicas: 1
         inputVars:
           nodeSelector: "{node-role.kubernetes.io/workload: }"
+
+      - objectTemplate: templates/http-client-sa.yml
+        replicas: 1
+
+      - objectTemplate: templates/http-client-rolebinding.yml
+        replicas: 1

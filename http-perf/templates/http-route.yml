@@ -4,8 +4,7 @@ metadata:
   name: http-perf-{{.Replica}}
 spec:
   port:
-    targetPort: 8080
+    targetPort: http
   to:
     kind: Service
     name: http-perf-{{.Replica}}
-

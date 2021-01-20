@@ -4,10 +4,9 @@ metadata:
   name: http-perf-passthrough-{{.Replica}}
 spec:
   port:
-    targetPort: 8443
+    targetPort: https
   tls:
     termination: passthrough
   to:
     kind: Service
     name: http-perf-{{.Replica}}
-

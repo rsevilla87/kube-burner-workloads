@@ -1,15 +1,24 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: http-client
+  name: http-client-{{.Replica}}
 spec:
-  nodeSelector: {{.nodeSelector}}
-  containers:
-  - image: quay.io/openshift-scale/http-stress
-    name: mb
-  restartPolicy: Always
-  hostNetwork: true
-  securityContext:
-    sysctls:
-    - name: net.ipv4.ip_local_port_range
-      value: "1024 65535"
+  selector:
+    matchLabels:
+      app: http-client-{{.Replica}}
+  template:
+    metadata:
+      labels:
+        app: http-client-{{.Replica}}
+    spec:
+      serviceAccountName: http-perf-client
+      tolerations:
+        - key: role
+          value: workload
+          effect: NoSchedule
+      nodeSelector: {{.nodeSelector}}
+      containers:
+      - image: quay.io/openshift-scale/http-stress
+        name: mb
+      restartPolicy: Always
+      hostNetwork: true
