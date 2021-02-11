@@ -1,0 +1,69 @@
+---
+global:
+  writeToFile: false
+  metricsDirectory: collected-metrics
+  indexerConfig:
+    enabled: ${INDEXING}
+    esServers: [${ES_SERVER}]
+    insecureSkipVerify: false
+    defaultIndex: ${ES_INDEX}
+    type: elastic
+  measurements:
+    - name: podLatency
+      esIndex: ${ES_INDEX}
+
+jobs:
+  - name: load-cluster
+    jobIterations: ${JOB_ITERATIONS}
+    qps: ${QPS}
+    burst: ${BURST}
+    namespacedIterations: true
+    namespace: load-cluster
+    podWait: false
+    waitFor: []
+    waitWhenFinished: true
+    objects:
+
+      - objectTemplate: client-secret.yml
+        replicas: 4
+        inputVars:
+          image: ${CLIENT_IMAGE_1}
+          podReplicas: 3
+          readinessProbe: /ready
+          readinessPeriod: 2
+
+      - objectTemplate: client-configmap.yml
+        replicas: 1
+        inputVars:
+          image: ${CLIENT_IMAGE_2}
+          podReplicas: 1
+          readinessProbe: /euler
+          readinessPeriod: 30
+
+      - objectTemplate: postgres-deployment-1.yml
+        replicas: 4
+        inputVars:
+          image: ${SERVER_IMAGE}
+
+      - objectTemplate: postgres-deployment-2.yml
+        replicas: 1
+        inputVars:
+          image: ${SERVER_IMAGE}
+
+      - objectTemplate: postgres-service-1.yml
+        replicas: 5
+
+      - objectTemplate: postgres-service-2.yml
+        replicas: 1
+
+      - objectTemplate: postgres-networkpolicy-1.yml
+        replicas: 5
+
+      - objectTemplate: postgres-networkpolicy-2.yml
+        replicas: 1
+
+      - objectTemplate: configmap.yml
+        replicas: 9
+
+      - objectTemplate: secret.yml
+        replicas: 9

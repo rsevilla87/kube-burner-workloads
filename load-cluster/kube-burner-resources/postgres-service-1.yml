@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: postgres-secret-{{.Replica}}
+spec:
+  selector:
+    app: postgres-secret-{{.Replica}}
+  ports:
+  - protocol: TCP
+    port: 5432
+    targetPort: 5432
+  portalIP: ''
+  type: ClusterIP
+  sessionAffinity: None

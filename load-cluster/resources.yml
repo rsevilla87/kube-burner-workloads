@@ -1,0 +1,53 @@
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: kube-burner
+---
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  namespace: kube-burner
+  name: kube-burner
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: kube-burner
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: kube-burner
+  namespace: kube-burner
+---
+kind: Job
+apiVersion: batch/v1
+metadata:
+  namespace: kube-burner
+  name: kube-burner-${UUID}
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      containers:
+      - command: ["/bin/sh", "-c"]
+        args:
+          - ${KUBE_BURNER_COMMAND}
+        image: quay.io/cloud-bulldozer/kube-burner:latest
+        imagePullPolicy: Always
+        workingDir: /mnt
+        name: kube-burner
+        volumeMounts:
+        - name: kube-burner-config
+          mountPath: /mnt
+      serviceAccountName: kube-burner
+      nodeSelector:
+        node-role.kubernetes.io/worker: ""
+      restartPolicy: Never
+      volumes:
+      - name: kube-burner-config
+        configMap:
+          name: kube-burner-config-${UUID}
