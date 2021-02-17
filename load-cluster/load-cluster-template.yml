@@ -36,9 +36,9 @@ jobs:
         replicas: 1
         inputVars:
           image: ${CLIENT_IMAGE_2}
-          podReplicas: 1
-          readinessProbe: /euler
-          readinessPeriod: 30
+          podReplicas: 2
+          readinessProbe: /ready
+          readinessPeriod: 2
 
       - objectTemplate: postgres-deployment-1.yml
         replicas: 4
