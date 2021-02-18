@@ -1,18 +1,23 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: client-configmap-{{.Replica}}
+  name: client-{{.Replica}}
 spec:
   template:
     metadata:
       labels:
-        app: client-configmap-{{.Replica}}
+        app: client-{{.Replica}}
     spec:
       nodeSelector:
         node-role.kubernetes.io/worker: ""
       containers:
       - name: perfapp
         image: {{.image}}
+        volumeMounts:
+        - name: configmap
+          mountPath: /var/configmap
+        - name: secret
+          mountPath: /var/secret
         readinessProbe:
           httpGet:
             path: {{.readinessProbe}}
@@ -37,21 +42,28 @@ spec:
               key: password
         - name: POSTGRESQL_DATABASE
           valueFrom:
-            configMapKeyRef:
+            secretKeyRef:
               name: client-{{.Replica}}
               key: database
         - name: POSTGRESQL_HOSTNAME
-          value: postgres-configmap-{{.Replica}}
+          value: postgres-{{.Replica}}
         - name: POSTGRESQL_PORT
           value: '5432'
         - name: POSTGRESQL_RETRY_INTERVAL
           value: '5'
         imagePullPolicy: IfNotPresent
       restartPolicy: Always
+      volumes:
+      - name: configmap
+        configMap:
+          name: client-{{.Replica}}
+      - name: secret
+        secret:
+          secretName: client-{{.Replica}}
   replicas: {{.podReplicas}}
   selector:
     matchLabels:
-      app: client-configmap-{{.Replica}}
+      app: client-{{.Replica}}
   triggers:
   - type: ConfigChange
   strategy:

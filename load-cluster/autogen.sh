@@ -5,8 +5,7 @@ CONFIG=kube-burner-resources/load-cluster.yml
 NAMESPACE=kube-burner
 
 export UUID=$(uuidgen)
-export CLIENT_IMAGE_1=quay.io/rsevilla/perfapp:latest
-export CLIENT_IMAGE_2=quay.io/rsevilla/perfapp:latest
+export CLIENT_IMAGE=quay.io/rsevilla/perfapp:latest
 export SERVER_IMAGE=registry.redhat.io/rhscl/postgresql-10-rhel7:latest
 KUBE_BURNER_COMMAND="kube-burner init -c /mnt/load-cluster.yml --uuid=${UUID}"
 
@@ -28,6 +27,8 @@ if [[ ${INDEXING} =~ ^(y|yeah|yes|si|yup)$ ]]; then
   read -p "Metric profile, metrics.yaml or metrics-aggregated.yaml (recommended for big clusters) [metrics.yaml]: " METRIC_PROFILE
   METRIC_PROFILE=${METRIC_PROFILE:-metrics.yaml}
   KUBE_BURNER_COMMAND+=" --prometheus-url=https://prometheus-k8s.openshift-monitoring.svc.cluster.local:9091 --token=${PROMETHEUS_TOKEN} -m=${METRIC_PROFILE}"
+else
+  export INDEXING=false
 fi
 read -p "QPS [20]: " QPS
 export QPS=${QPS:-20}
@@ -38,5 +39,9 @@ export KUBE_BURNER_COMMAND
 envsubst <<< $(cat ${BASE_CONFIG}) > ${CONFIG}
 envsubst <<< $(cat resources.yml) | kubectl apply -f -
 # kubectl does not follow symlinks if those files are not specified explicitly
-kubectl create configmap kube-burner-config-${UUID} --from-file=kube-burner-resources --from-file=kube-burner-resources/${METRIC_PROFILE} -n ${NAMESPACE}
+if [[ ${METRIC_PROFILE} != "" ]]; then
+  kubectl create configmap kube-burner-config-${UUID} --from-file=kube-burner-resources --from-file=kube-burner-resources/${METRIC_PROFILE} -n ${NAMESPACE}
+else
+  kubectl create configmap kube-burner-config-${UUID} --from-file=kube-burner-resources -n ${NAMESPACE}
+fi
 printf "Workload deployed in the ${NAMESPACE} namespace\n"

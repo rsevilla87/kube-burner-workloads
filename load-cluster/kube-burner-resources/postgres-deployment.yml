@@ -1,12 +1,12 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: postgres-configmap-{{.Replica}}
+  name: postgres-{{.Replica}}
 spec:
   template:
     metadata:
       labels:
-        app: postgres-configmap-{{.Replica}}
+        app: postgres-{{.Replica}}
     spec:
       nodeSelector:
         node-role.kubernetes.io/worker: ""
@@ -19,17 +19,17 @@ spec:
         env:
         - name: POSTGRESQL_USER
           valueFrom:
-            configMapKeyRef:
+            secretKeyRef:
               name: client-{{.Replica}}
               key: username
         - name: POSTGRESQL_PASSWORD
           valueFrom:
-            configMapKeyRef:
+            secretKeyRef:
               name: client-{{.Replica}}
               key: password
         - name: POSTGRESQL_DATABASE
           valueFrom:
-            configMapKeyRef:
+            secretKeyRef:
               name: client-{{.Replica}}
               key: database
         imagePullPolicy: IfNotPresent
@@ -39,7 +39,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: postgres-configmap-{{.Replica}}
+      app: postgres-{{.Replica}}
   triggers:
   - type: ConfigChange
   strategy:

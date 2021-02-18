@@ -3,20 +3,20 @@ global:
   writeToFile: false
   metricsDirectory: collected-metrics
   indexerConfig:
-    enabled: ${INDEXING}
-    esServers: [${ES_SERVER}]
+    enabled: true
+    esServers: [https://search-perfscale-dev-chmf5l4sh66lvxbnadi4bznl3a.us-west-2.es.amazonaws.com:443]
     insecureSkipVerify: false
-    defaultIndex: ${ES_INDEX}
+    defaultIndex: ripsaw-kube-burner
     type: elastic
   measurements:
     - name: podLatency
-      esIndex: ${ES_INDEX}
+      esIndex: ripsaw-kube-burner
 
 jobs:
   - name: load-cluster
-    jobIterations: ${JOB_ITERATIONS}
-    qps: ${QPS}
-    burst: ${BURST}
+    jobIterations: 
+    qps: 20
+    burst: 20
     namespacedIterations: true
     namespace: load-cluster
     cleanup: true
@@ -26,23 +26,23 @@ jobs:
     objects:
 
       - objectTemplate: client.yml
-        replicas: 7
+        replicas: 5
         inputVars:
-          image: ${CLIENT_IMAGE}
-          podReplicas: 3
+          image: quay.io/rsevilla/perfapp:latest
+          podReplicas: 5
           readinessProbe: /ready
           readinessPeriod: 2
 
       - objectTemplate: postgres-deployment.yml
-        replicas: 7
+        replicas: 5
         inputVars:
-          image: ${SERVER_IMAGE}
+          image: registry.redhat.io/rhscl/postgresql-10-rhel7:latest
 
       - objectTemplate: postgres-service.yml
-        replicas: 7
+        replicas: 5
 
       - objectTemplate: postgres-networkpolicy.yml
-        replicas: 7
+        replicas: 5
 
       - objectTemplate: configmap.yml
         replicas: 10

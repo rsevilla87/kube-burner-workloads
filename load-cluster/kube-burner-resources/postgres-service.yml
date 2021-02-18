@@ -1,10 +1,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: postgres-secret-{{.Replica}}
+  name: postgres-{{.Replica}}
 spec:
   selector:
-    app: postgres-secret-{{.Replica}}
+    app: postgres-{{.Replica}}
   ports:
   - protocol: TCP
     port: 5432
