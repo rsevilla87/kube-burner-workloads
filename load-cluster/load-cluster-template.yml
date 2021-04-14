@@ -41,9 +41,6 @@ jobs:
       - objectTemplate: postgres-service.yml
         replicas: 7
 
-      - objectTemplate: postgres-networkpolicy.yml
-        replicas: 7
-
       - objectTemplate: configmap.yml
         replicas: 10
 
