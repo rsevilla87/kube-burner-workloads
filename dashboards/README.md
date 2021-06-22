@@ -11,3 +11,12 @@ http://localhost:30293/d/hIBqKNvMz/kube-burner-report?from=now-3h&to=now
 ```
 
 ![dashboard](dashboard.png)
+
+## Available dashboards
+
+Each of the grafana dashboards available here is bound to a specific metric profile, avaialable in the [metric-profiles directory](../metric-profiles) of this repository.
+
+-  *api-and-etcd.json*: Bound to the `etcdapi.yml` profile
+-  *kube-burner-aggregated-latest.json*: Bound to the `metrics-aggregated.yaml` profile
+-  *kube-burner-latest.json*: Bound to the `metrics.yaml` profile
+-  *monitoring-sizing.json*: Bound to the `monitoring-metrics.yaml` profile
