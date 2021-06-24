@@ -1,0 +1,45 @@
+---
+global:
+  writeToFile: false
+  metricsDirectory: collected-metrics
+  indexerConfig:
+    enabled: false
+    esServers: []
+    insecureSkipVerify: false
+    defaultIndex: 
+    type: elastic
+
+jobs:
+  - name: load-cluster
+    jobIterations: 6
+    qps: 20
+    burst: 20
+    namespacedIterations: true
+    namespace: load-cluster
+    cleanup: true
+    podWait: false
+    waitFor: []
+    waitWhenFinished: true
+    objects:
+
+      - objectTemplate: templates/client.yml
+        replicas: 7
+        inputVars:
+          image: quay.io/rsevilla/perfapp:latest
+          podReplicas: 3
+          readinessProbe: /ready
+          readinessPeriod: 2
+
+      - objectTemplate: templates/postgres-deployment.yml
+        replicas: 7
+        inputVars:
+          image: registry.redhat.io/rhscl/postgresql-10-rhel7:latest
+
+      - objectTemplate: templates/postgres-service.yml
+        replicas: 7
+
+      - objectTemplate: templates/configmap.yml
+        replicas: 10
+
+      - objectTemplate: templates/secret.yml
+        replicas: 10
